@@ -6,6 +6,9 @@ export default class LoginLocators{
     readonly loginButton:Locator;
     readonly alertMessage:Locator;
     readonly dashboard:Locator;
+    readonly organizationForm:Locator;
+    readonly browseFilesButton!: Locator;
+
 
     constructor(page:Page){
         this.emailInput = page.locator('[type="email"]');
@@ -13,5 +16,6 @@ export default class LoginLocators{
         this.loginButton = page.locator('button[type="submit"]');
         this.alertMessage = page.locator('[role="alert"]');
         this.dashboard = page.getByText('Dashboard').nth(1);
+        this.organizationForm = page.locator('[data-testid="organization-form"]');
     }
 }

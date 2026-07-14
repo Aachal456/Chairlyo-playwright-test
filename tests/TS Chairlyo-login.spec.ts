@@ -1,4 +1,4 @@
-import{expect, test} from '../.github/workflows/Fixtures/fixtures'
+import{expect, test} from '../Fixtures/fixtures'
 import LoginPage from '../Pages/LoginPage';
 import loginLocators from './Login.locators';
 
