@@ -1,4 +1,4 @@
-import { APIRequestContext, APIResponse, BrowserContext } from "@playwright/test";
+import { APIRequestContext, APIResponse } from "@playwright/test";
 
 export class ApiClients {
     private token: string | null = null;

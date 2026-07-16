@@ -1,16 +1,9 @@
-<testsuites id="" name="" tests="2" failures="0" skipped="0" errors="0" time="27.74694000000001">
-<testsuite name="TS Chairlyo-login.spec.ts" timestamp="2026-07-15T01:19:20.906Z" hostname="chrome" tests="2" failures="0" skipped="0" time="16.271" errors="0">
-<testcase name="Login › Login with valid credentials" classname="TS Chairlyo-login.spec.ts" time="6.994">
+<testsuites id="" name="" tests="1" failures="0" skipped="0" errors="0" time="13.359551999999999">
+<testsuite name="example.spec.ts" timestamp="2026-07-16T02:40:12.307Z" hostname="chrome" tests="1" failures="0" skipped="0" time="7.893" errors="0">
+<testcase name="get started link" classname="example.spec.ts" time="7.893">
 <system-out>
 <![CDATA[
-[[ATTACHMENT|..\test-results\TS Chairlyo-login-Login-Login-with-valid-credentials-chrome\trace.zip]]
-]]>
-</system-out>
-</testcase>
-<testcase name="Login › Verify Email and password Field Value" classname="TS Chairlyo-login.spec.ts" time="9.277">
-<system-out>
-<![CDATA[
-[[ATTACHMENT|..\test-results\TS Chairlyo-login-Login-Ve-f7a71-il-and-password-Field-Value-chrome\trace.zip]]
+[[ATTACHMENT|..\test-results\example-get-started-link-chrome\trace.zip]]
 ]]>
 </system-out>
 </testcase>

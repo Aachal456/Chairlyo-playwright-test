@@ -2,6 +2,7 @@ import { expect, test } from '../Fixtures/fixtures';
 import LoginPage from '../Pages/LoginPage';
 import OrganizationPage from '../Pages/OrganizationPage';
 import DashboardPage from '../Pages/DashboardPage';
+import { OrganizationService } from '../api/Services/OrganizationService';
 test.describe('Login', () => {
     let loginPage: LoginPage;
     let organizationPage: OrganizationPage;
@@ -41,5 +42,12 @@ test.describe('Login', () => {
 
         await organizationPage.verifyOrganizationCreated(organizationData.name);
     });
+
+    test('API asisted test', async({organizationService, organizationData,planTypeID})=>{
+        const createdOrganization= await OrganizationService.createOrganization(toApiPayload(organizationData,planTypeID));
+        await dashboardPage.gotoOrganizationPage();
+        await organizationPage.verifyOrganizationPage();
+        await expect(organizationPage.getOrganizationRowByName(organizationData.name)).toBeVisible();
+    })
 
 })

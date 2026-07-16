@@ -1,4 +1,10 @@
+import path from 'path'
 import {expect as baseExpect,test as baseTest} from '@playwright/test';
+import { ApiClients } from '../api/clients/ApiClients';
+import { AuthService } from '../api/Services/AuthService';
+import { OrganizationApiPayload } from '../api/types/organization.types';
+import { OrganizationService } from '../api/Services/OrganizationService';
+import { request } from 'http';
 
 export type OrganizationData ={
     name: string;
@@ -16,6 +22,25 @@ export type OrganizationData ={
     };
 };
 
+export function toApiPayload(organizationData: OrganizationData, planTypeID: number): Record<string, unknown> {
+    return {
+        admin_email: organizationData.admin.email,
+        admin_first_name: organizationData.admin.firstName,
+        admin_last_name: organizationData.admin.lastName,
+        admin_password: organizationData.admin.password,
+        admin_phone: organizationData.admin.phone,
+        country: 'np',
+        name: organizationData.name,
+        organization_logo: '',
+        plan_type: planTypeID,
+        send_mail_notification: false,
+        slug: organizationData.slug,
+        status: organizationData.status,
+        timezone: 'Asia/Kathmandu',
+        trial_days: organizationData.trialDays,
+    };
+}
+
 type Fixtures ={
     email:string;
     password:string;
@@ -23,7 +48,11 @@ type Fixtures ={
     uiBaseUrl:string;
     apiBaseUrl:string;
     organizationData: OrganizationData;
-
+    apiClient: ApiClients;
+    authService:AuthService;
+    authToken: string;
+    organizationService: OrganizationService;
+    planTypeId: number
 }
 export const test=baseTest.extend<Fixtures>({
     //email:requireEnv('TEST_EMAIL'),
@@ -32,7 +61,7 @@ export const test=baseTest.extend<Fixtures>({
     password: process.env.TEST_PASSWORD,
     uiBaseUrl: process.env.UI_BASE_URL,
     apiBaseUrl: process.env.API_BASE_URL,
-        organizationData: async ({}, use) => {
+    organizationData: async ({}, use) => {
         const uniqueId = Date.now();
         await use({
             name:  `web-development-${uniqueId}`,
@@ -49,9 +78,28 @@ export const test=baseTest.extend<Fixtures>({
                 phone: `9812345678`,
             },
         });
-    }
-})   
+    },
 
+    apiClients: async({request, apiBaseUrl}, use)=>{
+        await use(new ApiClients(request, apiBaseUrl));
+    }
+
+    authService: async({apiClient},use)=>{
+        await use(new AuthService(apiClient));
+    }
+
+    authToken: async({authService, email, password},use)=>{
+        const token= await authService.loginWithAPI(email,password);
+        await use(token);
+    }
+
+    organizationService: async({apiClient},use)=>{
+        await use(new OrganizationLocators(apiClient));
+    },
+    planTypeId: async({}=>{
+        await use(40);
+    });
+});
 
 
 export const expect = baseExpect;

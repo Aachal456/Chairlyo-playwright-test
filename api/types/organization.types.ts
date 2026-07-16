@@ -1,4 +1,4 @@
-export type OrganizationPayload = {
+export type OrganizationApiPayload = {
 admin_email: string;
 admin_first_name: string;
 admin_last_name: string;
@@ -15,7 +15,7 @@ timezone: string;
 trial_days: string;
 };
 
-export type OrganizationResponse = Omit<OrganizationPayload,'trial_days'>&{
+export type OrganizationApiResponse = Omit<OrganizationApiPayload,'trial_days'>&{
     id: string | number;
     trial_days: number;
 };
