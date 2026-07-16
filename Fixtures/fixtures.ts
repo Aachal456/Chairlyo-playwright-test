@@ -20,14 +20,19 @@ type Fixtures ={
     email:string;
     password:string;
     baseUrl:string;
+    uiBaseUrl:string;
+    apiBaseUrl:string;
     organizationData: OrganizationData;
 
 }
 export const test=baseTest.extend<Fixtures>({
-    email:'admin@chairlyo.com',
-    password:'adminpassword',
-    baseUrl:'https://stage.chairlyo.com/login',
-    organizationData: async ({}, use) => {
+    //email:requireEnv('TEST_EMAIL'),
+    //password:requireEnv('TEST_PASSWORD'),
+    email: process.env.TEST_EMAIL ,
+    password: process.env.TEST_PASSWORD,
+    uiBaseUrl: process.env.UI_BASE_URL,
+    apiBaseUrl: process.env.API_BASE_URL,
+        organizationData: async ({}, use) => {
         const uniqueId = Date.now();
         await use({
             name:  `web-development-${uniqueId}`,
@@ -46,5 +51,7 @@ export const test=baseTest.extend<Fixtures>({
         });
     }
 })   
+
+
 
 export const expect = baseExpect;

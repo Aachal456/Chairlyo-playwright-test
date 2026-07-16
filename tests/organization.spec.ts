@@ -24,6 +24,12 @@ test.describe('Login', () => {
         await organizationPage.verifyOrganizationPage();
     });
 
+    test.skip('Navigate to Organization Page', async () => {
+        test.slow();
+        await dashboardPage.gotoOrganizationPage();
+        await organizationPage.verifyOrganizationPage();
+    });
+
     test('Add a new Organization', async ({ organizationData }) => {
         await dashboardPage.gotoOrganizationPage();
         await organizationPage.verifyOrganizationPage();

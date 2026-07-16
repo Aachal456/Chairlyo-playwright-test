@@ -1,0 +1,18 @@
+<testsuites id="" name="" tests="2" failures="0" skipped="0" errors="0" time="27.74694000000001">
+<testsuite name="TS Chairlyo-login.spec.ts" timestamp="2026-07-15T01:19:20.906Z" hostname="chrome" tests="2" failures="0" skipped="0" time="16.271" errors="0">
+<testcase name="Login › Login with valid credentials" classname="TS Chairlyo-login.spec.ts" time="6.994">
+<system-out>
+<![CDATA[
+[[ATTACHMENT|..\test-results\TS Chairlyo-login-Login-Login-with-valid-credentials-chrome\trace.zip]]
+]]>
+</system-out>
+</testcase>
+<testcase name="Login › Verify Email and password Field Value" classname="TS Chairlyo-login.spec.ts" time="9.277">
+<system-out>
+<![CDATA[
+[[ATTACHMENT|..\test-results\TS Chairlyo-login-Login-Ve-f7a71-il-and-password-Field-Value-chrome\trace.zip]]
+]]>
+</system-out>
+</testcase>
+</testsuite>
+</testsuites>

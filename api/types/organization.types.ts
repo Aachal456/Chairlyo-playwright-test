@@ -1,0 +1,22 @@
+export type OrganizationPayload = {
+admin_email: string;
+admin_first_name: string;
+admin_last_name: string;
+admin_password: string;
+admin_phone: string;
+country: string;
+name: string;
+organization_logo: string;
+plan_type: string;
+send_mail_notification: boolean;
+slug: string;
+status: string;
+timezone: string;
+trial_days: string;
+};
+
+export type OrganizationResponse = Omit<OrganizationPayload,'trial_days'>&{
+    id: string | number;
+    trial_days: number;
+};
+

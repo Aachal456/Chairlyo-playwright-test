@@ -160,7 +160,8 @@ export default class OrganizationLocators {
         this.editIcon = page.locator('table tbody tr').locator('svg').nth(1);
         this.deleteIcon = page.locator('table tbody tr').locator('svg').nth(3);
         this.alertMessage = page.locator('[role="alert"]');
-        this.editLocator = page.locator('table tbody tr').locator('svg').nth(1);
+        this.
+         = page.locator('table tbody tr').locator('svg').nth(1);
         this.deleteLocator = page.locator('table tbody tr').locator('svg').nth(3);
 
         // Add Organization form - header

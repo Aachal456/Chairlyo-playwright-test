@@ -6,4 +6,15 @@ node_modules/
 /blob-report/
 /playwright/.cache/
 /playwright/.auth/
+assets
+screenshots
+screenshots/
+test-results/
+playwright-report/
+blob-report/
+videos/
+reports/
 package-lock.json
+
+# Environment variables
+.env
