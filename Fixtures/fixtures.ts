@@ -5,6 +5,7 @@ import { AuthService } from '../api/Services/AuthService';
 import { OrganizationApiPayload } from '../api/types/organization.types';
 import { OrganizationService } from '../api/Services/OrganizationService';
 import { request } from 'http';
+import OrganizationLocators from '../Locators/organizationlocators';
 
 export type OrganizationData ={
     name: string;
@@ -80,18 +81,18 @@ export const test=baseTest.extend<Fixtures>({
         });
     },
 
-    apiClients: async({request, apiBaseUrl}, use)=>{
+    apiClient: async({request, apiBaseUrl}, use)=>{
         await use(new ApiClients(request, apiBaseUrl));
-    }
+    },
 
     authService: async({apiClient},use)=>{
         await use(new AuthService(apiClient));
-    }
+    },
 
     authToken: async({authService, email, password},use)=>{
         const token= await authService.loginWithAPI(email,password);
         await use(token);
-    }
+    },
 
     organizationService: async({apiClient},use)=>{
         await use(new OrganizationLocators(apiClient));
