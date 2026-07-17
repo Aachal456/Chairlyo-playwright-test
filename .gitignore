@@ -18,3 +18,8 @@ package-lock.json
 
 # Environment variables
 .env
+
+.vscode/
+results/
+tests/
+package-lock.json

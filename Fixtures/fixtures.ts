@@ -1,11 +1,8 @@
-import path from 'path'
 import {expect as baseExpect,test as baseTest} from '@playwright/test';
 import { ApiClients } from '../api/clients/ApiClients';
 import { AuthService } from '../api/Services/AuthService';
-import { OrganizationApiPayload } from '../api/types/organization.types';
 import { OrganizationService } from '../api/Services/OrganizationService';
-import { request } from 'http';
-import OrganizationLocators from '../Locators/organizationlocators';
+
 
 export type OrganizationData ={
     name: string;
@@ -95,12 +92,20 @@ export const test=baseTest.extend<Fixtures>({
     },
 
     organizationService: async({apiClient},use)=>{
-        await use(new OrganizationLocators(apiClient));
+        await use(new OrganizationService(apiClient));
     },
-    planTypeId: async({}=>{
+    planTypeId: async({}, use) => {
         await use(40);
-    });
+    }
 });
 
 
 export const expect = baseExpect;
+
+function async(arg0: {}): (number | import("@playwright/test").TestFixture<number, Fixtures & import("@playwright/test").PlaywrightTestArgs & import("@playwright/test").PlaywrightTestOptions & import("@playwright/test").PlaywrightWorkerArgs & import("@playwright/test").PlaywrightWorkerOptions>) | [...] | undefined {
+    throw new Error('Function not implemented.');
+}
+function use(arg0: number) {
+    throw new Error('Function not implemented.');
+}
+
